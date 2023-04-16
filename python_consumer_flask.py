@@ -25,19 +25,22 @@ conf = {
 consumer = Consumer(conf)
 consumer.subscribe(['user7-table-changes'])
 
-while True:
-    msg = consumer.poll(1.0)
-
-    if msg is None:
-        continue
-    if msg.error():
-        if msg.error().code() == KafkaError._PARTITION_EOF:
-            print('End of partition reached')
+def main():
+    while True:
+        msg = consumer.poll(1.0)
+    
+        if msg is None:
+            continue
+        if msg.error():
+            if msg.error().code() == KafkaError._PARTITION_EOF:
+                print('End of partition reached')
+            else:
+                print('Error while consuming message: {}'.format(msg.error()))
         else:
-            print('Error while consuming message: {}'.format(msg.error()))
-    else:
-        print('Received message: {}'.format(msg.value().decode('utf-8')))
-        # The kafka messages you receive on the topic are appended to the messages array
-        # The contents of messages array can be accessed using an http GET
-        data.append(msg.value().decode('utf-8'))
+            print('Received message: {}'.format(msg.value().decode('utf-8')))
+            # The kafka messages you receive on the topic are appended to the messages array
+            # The contents of messages array can be accessed using an http GET
+            data.append(msg.value().decode('utf-8'))
 
+if __name__ == "__main__":
+    main()
