@@ -5,14 +5,19 @@ import requests
 import json
 from flask import Flask, jsonify, request
 
+application = Flask(__name__)
 # Kafka data array
 data = []
 
 # Handler function for the HTTP GET request
-application = Flask(__name__)
-@application.route('/', methods=['GET'])
-def get_data():
+@application.route('/')
+@application.route('/consume')
+def kafka_consume():
     return jsonify(data)
+
+@application.route('/status')
+def status():
+    return jsonify({'status': 'kafka consumer is running'})
 
 # Kafka cluster config
 conf = {
