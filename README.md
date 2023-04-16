@@ -1,1 +1,1 @@
-# python-kafka-consumer
+# Kafka producer and consumer test program in Python
