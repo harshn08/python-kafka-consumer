@@ -3,14 +3,21 @@ import json
 from flask import Flask, jsonify, request
 from confluent_kafka import Consumer, KafkaError
 
+application = Flask(__name__)
+
 # Kafka data array
 data = []
+data.append("empty kafka array")
 
 # Handler function for the HTTP GET request
-application = Flask(__name__)
-@application.route('/', methods=['GET'])
+@application.route('/')
+@application.route('/consume')
 def get_data():
     return jsonify(data)
+
+@application.route('/status')
+def status():
+    return jsonify({'status': 'kafka consumer is running'})
 
 conf = {
     'bootstrap.servers': 'crdb-cluster-kafka-bootstrap.crdb-kafka.svc.cluster.local',
