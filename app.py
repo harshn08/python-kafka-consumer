@@ -7,7 +7,7 @@ import requests
 # Kafka cluster config
 conf = {
     #'bootstrap.servers': 'crdb-cluster-kafka-bootstrap.crdb-kafka.svc.cluster.local',
-    'bootstrap.servers': 'crdb-cluster-kafka-bootstrap.user7-test.svc.cluster.local'
+    'bootstrap.servers': 'crdb-cluster-kafka-bootstrap.user7-test.svc.cluster.local',
     'group.id': 'my-group-id',
     'auto.offset.reset': 'earliest'
 }
