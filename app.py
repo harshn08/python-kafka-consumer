@@ -6,7 +6,8 @@ import requests
 
 # Kafka cluster config
 conf = {
-    'bootstrap.servers': 'crdb-cluster-kafka-bootstrap.crdb-kafka.svc.cluster.local',
+    #'bootstrap.servers': 'crdb-cluster-kafka-bootstrap.crdb-kafka.svc.cluster.local',
+    'bootstrap.servers': 'crdb-cluster-kafka-bootstrap.user7-test.svc.cluster.local'
     'group.id': 'my-group-id',
     'auto.offset.reset': 'earliest'
 }
@@ -17,7 +18,7 @@ consumer = Consumer(conf)
 #topic_name = os.getenv('TOPIC_NAME')
 #print("Topic name is set to: ", topic_name)
 #consumer.subscribe([topic_name])
-consumer.subscribe(['user77-table-changes'])
+consumer.subscribe(['user7-table-changes'])
 
 def main():
     while True:
