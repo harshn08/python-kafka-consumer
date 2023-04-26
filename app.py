@@ -16,7 +16,8 @@ consumer = Consumer(conf)
 #consumer.subscribe(['user7-table-changes'])
 topic_name = os.getenv('TOPIC_NAME')
 print("Topic name is set to: ", topic_name)
-consumer.subscribe([topic_name])
+#consumer.subscribe([topic_name])
+onsumer.subscribe(['user1-table-changes'])
 
 def main():
     while True:
