@@ -14,8 +14,8 @@ conf = {
 # Initialize Consumer and subscribe to kafka topic
 consumer = Consumer(conf)
 #consumer.subscribe(['user7-table-changes'])
-topic_name = os.getenv('TOPIC_NAME')
-print("Topic name is set to: ", topic_name)
+#topic_name = os.getenv('TOPIC_NAME')
+#print("Topic name is set to: ", topic_name)
 #consumer.subscribe([topic_name])
 consumer.subscribe(['user1-table-changes'])
 
