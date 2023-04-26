@@ -1,5 +1,6 @@
 # This code works like a charm for a developer user who is in their own namespace
 #
+import os
 from confluent_kafka import Consumer, KafkaError
 import requests
 
